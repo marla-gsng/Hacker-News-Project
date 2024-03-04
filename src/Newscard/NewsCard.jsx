@@ -30,7 +30,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function NewsCard({story_title, story_url, created_at, comment_text,}) {
+export default function NewsCard({story_title, story_url, created_at, comment_text, author }) {
   const [expanded, setExpanded] = React.useState(false);
 
 
@@ -52,12 +52,16 @@ export default function NewsCard({story_title, story_url, created_at, comment_te
           </IconButton>
         }
        
-        title={story_title} 
+        title={author} 
         subheader={created_at}
+        
       />
 
       <CardContent>
       
+      <Typography variant="body1" color="text.primary" fontSize="20px" fontWeight="bold">
+          {story_title}
+        </Typography>
         <Typography variant="body2" color="text.secondary">
           {story_url}
         </Typography>
