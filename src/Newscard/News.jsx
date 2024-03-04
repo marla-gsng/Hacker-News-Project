@@ -5,8 +5,8 @@ const News =({dayNews}) => {
     return(
         <>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-                {dayNews.map((dayNews, index) => {
-                    return <NewsCard key={index} {...dayNews} />
+                {dayNews.map((news, index) => {
+                    return <NewsCard key={index} {...news} />
                 })}
             </div>
         </>
