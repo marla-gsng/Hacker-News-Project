@@ -53,4 +53,51 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default Search 
+
+
+export default function SearchAppBar({  apiCall }) {
+    const [searchPokemon, setSearchPokemon] = useState('')
+
+
+    const handleClick = async () => {
+        await apiCall(searchPokemon)
+    }
+
+
+    return (
+        <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="open drawer"
+                        sx={{ mr: 2 }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component="div"
+                        sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                    >
+                        Hacker News
+                    </Typography>
+
+                    <Button color='success' variant='contained' onClick={handleClick}>
+                        <SearchIcon />
+                    </Button>
+                    <Search onChange={(e) => setSearchPokemon(e.target.value)} >
+                        <StyledInputBase
+                            placeholder="Search…"
+                            inputProps={{ 'aria-label': 'search' }}
+                        />
+                    </Search>
+
+                </Toolbar>
+            </AppBar>
+        </Box>
+    );
+}
