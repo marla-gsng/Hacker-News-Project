@@ -4,7 +4,7 @@ import axios from 'axios'
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
+
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
@@ -16,7 +16,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import News from './News';
+
 
 
 const ExpandMore = styled((props) => {
@@ -30,8 +30,24 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function NewsCard({story_title, story_url, created_at,author, comment_text}) {
+export default function NewsCard({story_title, url,story_url, created_at,author, comment_text,title}) {
   const [expanded, setExpanded] = React.useState(false);
+
+// conditional rendering with story_url & url
+
+  if (story_url) {
+    url = story_url
+  }
+  else {
+    url = url
+  }
+
+  if (story_title) {
+    story_title = story_title
+  }
+  else {
+    story_title = title
+  }
 
 
   const handleExpandClick = () => {{}
@@ -39,7 +55,7 @@ export default function NewsCard({story_title, story_url, created_at,author, com
   };
 
   return (
-    <Card sx={{ width: 300, margin: "3%", bgcolor: blue[100] }}>
+    <Card sx={{ width: 340, margin: "2.5%", bgcolor: blue[100] }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="">
@@ -64,9 +80,9 @@ export default function NewsCard({story_title, story_url, created_at,author, com
         >
           {story_title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          <a href={story_url} target="_blank">
-            {story_url}
+        <Typography variant="body2" color="text.secondary" margin="30px">
+          <a href={url} target="_blank">
+            {url}
           </a>
         </Typography>
       </CardContent>

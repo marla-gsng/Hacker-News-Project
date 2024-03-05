@@ -1,5 +1,5 @@
 
-const headLine = (prop) => {
+const HeadLine = (prop) => {
     console.log(prop);
     return (
         <div>
@@ -8,4 +8,4 @@ const headLine = (prop) => {
     )
 }
 
-export default headLine
+export default HeadLine
