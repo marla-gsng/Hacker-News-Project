@@ -5,7 +5,7 @@ import './App.css'
 import NavBar from './NavBar/NavBar'
 import News from './Newscard/News'
 import HeadLine from './Newscard/Headline'
-import headLine from './Newscard/Headline'
+
 
 
 function App() {
@@ -26,8 +26,9 @@ function App() {
   }, []);
 
   const dayNewsApi = async (search) => {
+    console.log(search);
     try {
-      const response = await axios.get(`https://hn.algolia.com/api/v1/search?query=${search}`)
+      const response = await axios.get(`https://hn.algolia.com/api/v1/search_by_date?query=${search}&tags=story`)
       setDayNews(response.data.hits) 
       console.log(response);
     } catch (error) {
@@ -43,7 +44,7 @@ function App() {
       <div>
         <marquee behavior="slow" direction=""><h2>Hacker News - Headlines Of The Day</h2></marquee></div>
       <News dayNews={dayNews}/>
-      <HeadLine/>
+      
       
            
       
