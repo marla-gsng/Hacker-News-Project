@@ -33,22 +33,9 @@ const ExpandMore = styled((props) => {
 export default function NewsCard({story_title, url,story_url, created_at,author, comment_text,title}) {
   const [expanded, setExpanded] = React.useState(false);
 
-// conditional rendering with story_url & url
+ url = story_url ? story_url : url;
 
-  if (story_url) {
-    url = story_url
-  }
-  else {
-    url = url
-  }
-
-  if (story_title) {
-    story_title = story_title
-  }
-  else {
-    story_title = title
-  }
-
+story_title = story_title ? story_title : title;
 
   const handleExpandClick = () => {{}
     setExpanded(!expanded);
