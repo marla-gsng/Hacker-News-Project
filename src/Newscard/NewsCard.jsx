@@ -30,7 +30,11 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
+
 export default function NewsCard({story_title, url,story_url, created_at,author, comment_text,title}) {
+
+
+
   const [expanded, setExpanded] = React.useState(false);
 
 // conditional rendering with story_url & url
@@ -68,16 +72,24 @@ export default function NewsCard({story_title, url,story_url, created_at,author,
           </IconButton>
         }
         title={author}
+
+       
+       
         subheader={created_at}
+        
       />
 
       <CardContent>
+
         <Typography
           variant="body1"
           color="text.primary"
           fontSize="20px"
           fontWeight="bold"
         >
+
+      
+  
           {story_title}
         </Typography>
         <Typography variant="body2" color="text.secondary" margin="30px">
