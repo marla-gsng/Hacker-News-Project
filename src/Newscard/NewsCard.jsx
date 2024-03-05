@@ -30,7 +30,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function NewsCard({story_title, story_url, created_at, comment_text,}) {
+export default function NewsCard({story_title, story_url, created_at,author, comment_text}) {
   const [expanded, setExpanded] = React.useState(false);
 
 
@@ -39,8 +39,8 @@ export default function NewsCard({story_title, story_url, created_at, comment_te
   };
 
   return (
-    <Card sx={{ width: 300 , margin:'3%' ,bgcolor: blue[100]  }}>
-      <CardHeader 
+    <Card sx={{ width: 300, margin: "3%", bgcolor: blue[100] }}>
+      <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="">
             !!!
@@ -51,15 +51,23 @@ export default function NewsCard({story_title, story_url, created_at, comment_te
             <MoreVertIcon />
           </IconButton>
         }
-       
-        title={story_title} 
+        title={author}
         subheader={created_at}
       />
 
       <CardContent>
-      
+        <Typography
+          variant="body1"
+          color="text.primary"
+          fontSize="20px"
+          fontWeight="bold"
+        >
+          {story_title}
+        </Typography>
         <Typography variant="body2" color="text.secondary">
-          {story_url}
+          <a href={story_url} target="_blank">
+            {story_url}
+          </a>
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -80,10 +88,7 @@ export default function NewsCard({story_title, story_url, created_at, comment_te
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>
-            {comment_text}
-          </Typography>
-         
+          <Typography paragraph>{comment_text}</Typography>
         </CardContent>
       </Collapse>
     </Card>

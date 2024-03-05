@@ -41,7 +41,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     width: '100%',
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create('width'),
         [theme.breakpoints.up('sm')]: {
@@ -55,12 +54,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
-export default function SearchAppBar({  apiCall }) {
-    const [searchPokemon, setSearchPokemon] = useState('')
+export default function SearchAppBar({ searchCall}) {
+    const [searchNews , setSearchNews ] = useState('')
+    console.log(SearchAppBar);
 
 
     const handleClick = async () => {
-        await apiCall(searchPokemon)
+        await searchCall(searchNews)
+        
     }
 
 
@@ -89,7 +90,7 @@ export default function SearchAppBar({  apiCall }) {
                     <Button color='success' variant='contained' onClick={handleClick}>
                         <SearchIcon />
                     </Button>
-                    <Search onChange={(e) => setSearchPokemon(e.target.value)} >
+                    <Search onChange={(e) => setSearchNews(e.target.value)} >
                         <StyledInputBase
                             placeholder="Search…"
                             inputProps={{ 'aria-label': 'search' }}

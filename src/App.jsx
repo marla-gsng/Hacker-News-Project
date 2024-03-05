@@ -3,8 +3,10 @@ import axios from 'axios'
 import { Skeleton, Typography } from '@mui/material'
 import './App.css'
 import NavBar from './NavBar/NavBar'
-import NewsCard from './Newscard/NewsCard'
 import News from './Newscard/News'
+import HeadLine from './Newscard/Headline'
+import headLine from './Newscard/Headline'
+
 
 function App() {
 
@@ -22,18 +24,31 @@ function App() {
   useEffect(() => {
     newsCall();
   }, []);
-  
 
-  
+  const dayNewsApi = async (search) => {
+    try {
+      const response = await axios.get(`https://hn.algolia.com/api/v1/search?query=${search}`)
+      setDayNews(response.data.hits) 
+      console.log(response);
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+
 
   return (
     <>
-      <NavBar/>
+      <NavBar searchCall={dayNewsApi}/>
       <div>
         <marquee behavior="slow" direction=""><h2>Hacker News - Headlines Of The Day</h2></marquee></div>
       <News dayNews={dayNews}/>
+      <HeadLine/>
+      
+           
+      
     </>
-  )
-}
+  ) 
+} 
 
 export default App
