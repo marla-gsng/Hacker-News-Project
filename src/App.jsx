@@ -4,7 +4,7 @@ import { Skeleton, Typography } from '@mui/material'
 import './App.css'
 import NavBar from './NavBar/NavBar'
 import News from './Newscard/News'
-import HeadLine from './Newscard/Headline'
+import Footer from './Newscard/Footer'
 
 
 
@@ -44,6 +44,7 @@ function App() {
       <div>
         <marquee behavior="slow" direction=""><h2>Hacker News - Headlines Of The Day</h2></marquee></div>
       <News dayNews={dayNews}/>
+      <Footer />
       
       
            
