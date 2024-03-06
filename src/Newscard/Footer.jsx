@@ -2,7 +2,8 @@
 function Footer() {
   return (
     <footer style={styles.footer}>
-      <p>This is a simple footer for a React application.</p>
+      <p>Thanks for reading - email us if you have any questions or concerns</p>
+      <p> &copy; 2024 All right reserved</p>
     </footer>
   );
 }

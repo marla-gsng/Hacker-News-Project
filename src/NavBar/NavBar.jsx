@@ -79,7 +79,7 @@ export default function SearchAppBar({ searchCall}) {
               <MenuIcon />
             </IconButton>
             <Typography
-              variant="h6"
+              variant="h3"
               noWrap
               component="div"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
