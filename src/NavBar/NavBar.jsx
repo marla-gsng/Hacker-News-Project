@@ -10,6 +10,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { Button } from '@mui/material';
 import { useState } from 'react';
+import { useNavigate, Link} from 'react-router-dom';
+
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -57,7 +59,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function SearchAppBar({ searchCall}) {
     const [searchNews , setSearchNews ] = useState('')
     console.log(SearchAppBar);
-
+ let navigate = useNavigate()
 
     const handleClick = async () => {
         await searchCall(searchNews)
@@ -69,23 +71,30 @@ export default function SearchAppBar({ searchCall}) {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="fixed">   
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
+            
+          
             <Typography
               variant="h3"
               noWrap
               component="div"
-              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+              sx={{ flexGrow: 2, display: { xs: "none", sm: "block" } }}
             >
-              Hacker News
+              <Link to="/">Hacker News</Link>
             </Typography>
+          
+
+         
+
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ flexGrow: 3, display: { xs: "none", sm: "block" } }}
+
+            > <Link to="/contact">Contact Us</Link>  
+          </Typography>
+
+         
 
             <Search onChange={(e) => setSearchNews(e.target.value)}>
               <StyledInputBase
